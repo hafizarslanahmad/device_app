@@ -1,0 +1,27 @@
+
+<h1> comment Index </h1>
+
+<table class= "table">
+  
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Comment</th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+     <%@comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id%></td>
+        <td><%= comment.comment%></td>
+        
+        <td><%= link_to "show data", comment_path(comment.id), class: "btn btn-primary"%></td>
+      </tr>
+    <%end%>
+    
+  </tbody>
+     
+</table>
+

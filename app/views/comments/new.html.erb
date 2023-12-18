@@ -1,0 +1,31 @@
+<h1> Comment </h1>
+
+<%= simple_form_for @comment do |f| %>
+ <%= f.hidden_field :user_id, value:   current_user.id %>
+    <div class="card " style="background-color:Lightblue;  padding-4">
+        <div class="card-body">
+            <div class= "mt-1">
+             <%= f.input :comment %>
+              </div>
+        </div>
+    
+
+  <div>
+    <label for="post_id">Select a Post:</label>
+    <%= f.collection_select :post_id, Post.all, :id, :tital, prompt: true%>
+  </div><br>
+  
+  <%if false%>
+    <div>
+        <h3>Or create a new post:</h3>
+        <%= f.fields_for :post, Post.new do |post_attributes|%>
+            <%= post_attributes.label :tital, "Title:" %>
+            <%= post_attributes.text_field :tital %>
+        <% end %>
+    </div>
+  <%end%>
+    <div class= "mt-4">
+        <%= f.submit "comment" , class:"btn btn-primary" %>
+    </div>
+    </div>
+  <% end %> 

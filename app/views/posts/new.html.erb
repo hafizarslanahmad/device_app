@@ -1,0 +1,30 @@
+<h1> Post </h1>
+
+<%= simple_form_for @post , data:{turbo: false} do |f| %>
+ <%= f.hidden_field :user_id, value:   current_user.id %>
+    <div class="card " style="background-color:Lightblue;  padding-4">
+    <div class="card-body">
+        <div class= "mt-1">
+          <%= f.input :tital %>
+        </div>
+
+      <div class= "mt-4">
+        <%= f.input :field %>
+      </div>
+
+      <div>
+        <h3>Or create a new comment:</h3>
+         <%= f.fields_for :comment   do |comment_attributes|%>
+         <%= comment_attributes.label :comment, "User comment:" %>
+         <%= comment_attributes.text_field :comment %>
+         <%= f.hidden_field :user_id, value:   current_user.id %>
+         <%= f.hidden_field :post_id, value:   @post.id %>
+         <% end %>
+      </div>
+        <div class= "mt-4">
+            <%= f.submit "post" , class:"btn btn-primary" %>
+        </div>
+    </div>
+    </div>
+ 
+<% end %>   

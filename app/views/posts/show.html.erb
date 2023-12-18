@@ -1,0 +1,35 @@
+<h1> Show Post </h1>
+
+<strong> Tital: </strong>
+<%= @post.tital %>
+<br>
+<strong> Field: </strong>
+<%= @post.field %>
+
+
+ <%= simple_form_for @comment, data:{turbo: false} do |f| %>
+ <%= f.hidden_field :user_id, value:   current_user.id %>
+ <%= f.hidden_field :post_id, value:  @post.id %>
+    <div class="card ">
+        <div class="card-body">
+            <div class= "mt-1">
+             <%= f.input :comment %>
+              </div>
+              <div class= "mt-4">
+             <%= f.submit "comment" , class:"btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+ 
+<% end %>   
+
+    
+      <div class= "mt-2">
+        <% @post.comments.each do |comment|%>
+          <div class= "card">
+           <%= comment.comment%>
+          </div> 
+         <br>
+        <% end %>
+      </div>
+    
